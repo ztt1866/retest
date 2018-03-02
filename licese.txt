@@ -1,0 +1,16 @@
+vector<int> twoSum(vector<int>& nums, int target) {
+		unordered_map<int, int> hash;//声明一个关键字key是int，value是int的类型
+		vector<int> result;//声明一个容器，用于存储结果，并返回
+		for (int i = 0; i < nums.size(); i++)
+		{
+			int numbertofind = target - nums[i];
+			if (hash.find(numbertofind) != hash.end())//哈希表里找到numbertofind
+			{
+				result.push_back(hash[numbertofind]);//把该key的value（桶号）push到result里面
+				result.push_back(i);//再把i push到result里面
+				return result;
+			}
+			hash[nums[i]] = i; //哈希表为空或哈希表里无numbertofind，把它存储到哈希表里，把关键字nums[i]存在i号桶里                    
+		}
+		return result;
+	}
